@@ -1,0 +1,29 @@
+CREATE TABLE USUARIO (
+	DNI varchar(10) NOT NULL, 
+	nombre varchar(50) NULL, 
+	apellidoPaterno varchar(50) NULL, 
+	materno varchar(50) NULL, 
+	PRIMARY KEY (DNI)
+);
+
+CREATE TABLE RECEPCIONISTA (
+	DNI varchar(255) NOT NULL, 
+	nombre varchar(50) NULL, 
+	apellidoPaterno varchar(50) NULL, 
+	apellidoMaterno varchar(100) NULL, 
+	PRIMARY KEY (DNI)
+);
+
+CREATE TABLE BOLETO (
+	codigoBoleto int IDENTITY NOT NULL, 
+	ruta varchar(100) NULL, 
+	fechaViaje date NULL, 
+	horaViaje int NULL, 
+	numeroAsiento int NULL, 
+	USUARIODNI varchar(10) NOT NULL, 
+	RECEPCIONISTADNI varchar(255) NOT NULL, 
+	PRIMARY KEY (codigoBoleto)
+);
+
+ALTER TABLE BOLETO ADD CONSTRAINT FKBOLETO27297 FOREIGN KEY (USUARIODNI) REFERENCES USUARIO (DNI);
+ALTER TABLE BOLETO ADD CONSTRAINT FKBOLETO873931 FOREIGN KEY (RECEPCIONISTADNI) REFERENCES RECEPCIONISTA (DNI);
