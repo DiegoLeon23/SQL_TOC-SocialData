@@ -11,7 +11,7 @@ update_at datetime
 ---INSERCIONES 
 insert into student(firstname,lastname,names,create_at,update_at)
 values
-('cardenas','aquino','anthony',getdate(),getdate());
+('Leon','Ortiz','Diego',getdate(),getdate());
 select * from student;
 create table specialty(
 id_specialty int primary key identity,
@@ -23,7 +23,7 @@ update_at datetime
 
 insert into specialty([description],detail,create_at,update_at)
 values
-('Computacion e informatica','',getdate(),getdate());
+('Arquitectura y Diseño de Interiores','',getdate(),getdate());
 select * from specialty;
 create table course(
 id_course  int primary key identity,
@@ -36,6 +36,14 @@ update_at datetime
 insert into course([description],detail,create_at,update_at)
 values
 ('MS SQL SERVER','',getdate(),getdate());
+
+insert into course([description],detail,create_at,update_at)
+values
+('UML','',getdate(),getdate());
+
+DECLARE @id_curso int  = @@identity
+SELECT @id_curso;
+
 select * from course;
 create table registry(
 id_registry int primary key identity,
@@ -49,7 +57,7 @@ update_at datetime
 
 insert into registry(id_course,id_specialty,create_at,update_at)
 values
-(1,1,getdate(),getdate());
+(2,2,getdate(),getdate());
 select * from registry;
 
 create table registry_detail(
@@ -96,3 +104,4 @@ update_at datetime
 );
 select * from assistance;
 go
+

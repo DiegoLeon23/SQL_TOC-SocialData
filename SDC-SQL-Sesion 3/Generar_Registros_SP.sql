@@ -1,5 +1,6 @@
- ---inserciones automaticas a tablas (qualification, assistance,registry_detail) a traves de SP
- CREATE PROCEDURE SP_registro_Detalle_insert(
+---Sesion 3
+ --1 -Crear un procedimiento almacenado para generar registros.
+CREATE PROCEDURE SP_registro_Detalle_insert(
  @id_registry int,
  @id_student int 
  )
@@ -19,11 +20,17 @@
 		insert into assistance (id_registry_detail,[date],update_at)
 		values (@id_registry_detail,@date,getdate())
 		set @date = dateadd(week,1,@date);
- end
+	 end
+	 
 
- execute SP_registro_Detalle_insert 1,1;
+ execute SP_registro_Detalle_insert 2,2;
 
  select * from assistance
  select * from qualification
  select * from registry_detail
  select * from student
+ select * from registry
+
+
+
+
