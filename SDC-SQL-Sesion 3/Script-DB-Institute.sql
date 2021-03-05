@@ -23,8 +23,9 @@ update_at datetime
 
 insert into specialty([description],detail,create_at,update_at)
 values
-('Arquitectura y Diseño de Interiores','',getdate(),getdate());
+('Arquitectura y Diseï¿½o de Interiores','',getdate(),getdate());
 select * from specialty;
+
 create table course(
 id_course  int primary key identity,
 [description] varchar(50),
@@ -93,7 +94,7 @@ update_at datetime
 );
 select * from qualification
 
-select * from qualification;
+
 create table assistance(
 id_assistance int primary key identity,
 id_registry_detail int,
