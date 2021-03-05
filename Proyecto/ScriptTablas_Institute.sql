@@ -1,3 +1,4 @@
+--- CREACION DE LAS TABLAS
 CREATE TABLE institute (
 	idInstitute int PRIMARY KEY IDENTITY, 
 	[description] varchar(100),
@@ -74,8 +75,8 @@ SELECT C.*,S.[description] Descripcion_Specialty FROM course C inner join specia
 CREATE TABLE registry(
     idRegistry int PRIMARY KEY IDENTITY,
     idTeacher int,
-    idCourse int, ---FOREIGN KEY    
-    idSchedule int, ---FOREIGN KEY
+    idCourse int, 
+    idSchedule int, 
     date_start date,
     date_end  date,
     created_at datetime default GETDATE(),
@@ -143,9 +144,4 @@ CREATE TABLE homework(
 );
 
 -----------------------------------------------------------------
-
-
-
-
-
 
