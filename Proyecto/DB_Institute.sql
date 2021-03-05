@@ -1,3 +1,5 @@
+CREATE DATABASE Institucion_Academica
+USE Institucion_Academica
 --- CREACION DE LAS TABLAS DE BASE DE DATOS
 CREATE TABLE institute(
 	idInstitute int PRIMARY KEY IDENTITY, 
