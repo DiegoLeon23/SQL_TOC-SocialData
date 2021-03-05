@@ -1,5 +1,5 @@
---- CREACION DE LAS TABLAS
-CREATE TABLE institute (
+--- CREACION DE LAS TABLAS DE BASE DE DATOS
+CREATE TABLE institute(
 	idInstitute int PRIMARY KEY IDENTITY, 
 	[description] varchar(100),
 	created_at datetime default GETDATE(),
@@ -8,8 +8,9 @@ CREATE TABLE institute (
 INSERT INTO institute([description]) VALUES ('UNMSM')
 SELECT * FROM institute
 ----------------------------------
-CREATE TABLE person (
+CREATE TABLE person(
 	idPerson int PRIMARY KEY IDENTITY, 
+    idCargo int,
 	dni varchar(10),
 	firstname varchar(30),
 	lastname varchar(30),
@@ -21,13 +22,23 @@ CREATE TABLE person (
 	email varchar(30),
 	sex varchar(10),
 	created_at datetime default GETDATE(),
-	updated_at datetime default GETDATE()
+	updated_at datetime default GETDATE(),
+    FOREIGN KEY (idCargo) REFERENCES cargo(idCargo)
 );
 
 INSERT INTO 
-    person(dni,firstname,lastname,[names],[password],datebirth,cellphone,email,sex) 
-VALUES ('72179861','LEON','ORTIZ','DIEGO ENRIQUE','DO72LN61','20000213','959837200','diego15leon@gmail.com','MASCULINO') 
+    person(idCargo,dni,firstname,lastname,[names],[password],datebirth,cellphone,email,sex) 
+VALUES (1,'72179861','LEON','ORTIZ','DIEGO ENRIQUE','1213124','20000213','959837200','diego15leon@gmail.com','MASCULINO') 
 SELECT * FROM person
+-------------------------------------
+CREATE TABLE cargo(
+    idCargo int PRIMARY KEY IDENTITY,
+    detalleCargo varchar(20) 
+);
+
+INSERT INTO cargo(detalleCargo) VALUES('ESTUDIANTE')
+INSERT INTO cargo(detalleCargo) VALUES('PROFESOR')
+SELECT * FROM cargo
 ----------------------------------------
 CREATE TABLE schedule(
     idSchedule int PRIMARY KEY IDENTITY,
@@ -53,7 +64,7 @@ CREATE TABLE specialty(
 );
 INSERT INTO 
     specialty([description],idInstitute)
-VALUES ('CIENCIAS',2)
+VALUES ('CIENCIAS',1)
 SELECT * FROM specialty
 -------------------------------------------------
 CREATE TABLE course (
@@ -144,4 +155,3 @@ CREATE TABLE homework(
 );
 
 -----------------------------------------------------------------
-
