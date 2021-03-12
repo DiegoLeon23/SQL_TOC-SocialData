@@ -12,13 +12,13 @@ CREATE PROCEDURE SP_registro_Detalle_insert(
 	 INSERT INTO qualification(id_registry_detail,create_at,update_at)
 	 VALUES(@id_registry_detail,GETDATE(),GETDATE());
  
-	 declare @date  datetime = getdate();
+	 declare @date  datetime = (select fecha_inicial from registry where id=@id_registry);
 	 declare @date_end  datetime = dateadd(week,12,getdate());
 
 	 while @date<@date_end 
 	 begin
-		insert into assistance (id_registry_detail,[date],update_at)
-		values (@id_registry_detail,@date,getdate())
+		insert into assistance (id_registry_detail,[date],update_at,estado)
+		values (@id_registry_detail,@date,getdate(),'F')
 		set @date = dateadd(week,1,@date);
 	 end
 	 
